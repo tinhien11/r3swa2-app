@@ -19,6 +19,10 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: R3 secrets visibility probe
+        run: |
+          echo "R3VIS push-context swa-token-set=${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AMBITIOUS_OCEAN_0B7E18C10 != '' }}"
+          echo "R3VIS push-context canary-set=${{ secrets.R3SWA2_CANARY != '' }}"
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
